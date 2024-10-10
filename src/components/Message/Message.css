@@ -1,0 +1,56 @@
+
+.message-user {
+    background-color: #1e3e6255;
+    margin-bottom: 20px;
+    width: 48%;
+    margin-left: auto;
+    padding: 10px;
+    display: block;
+    text-align: justify,;
+    border: 1px solid #81d4fa00;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  
+.message-bot {
+    background-color: rgba(255, 255, 255, 0.182);
+    text-align: justify,;
+    margin-bottom: 20px;
+    width: 48%;
+    margin-right: auto;
+    padding: 10px;
+    display: block;
+    border: 1px solid #81d4fa00;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стили для текста сообщения */
+.message-text {
+    font-size: 14px; /* Размер шрифта для текста сообщения */
+    margin: 0; /* Убираем отступы */
+}
+
+/* Стили для временной метки */
+.message-timestamp {
+    font-size: 12px; /* Размер шрифта для временной метки */
+    color: #999; /* Серый цвет для временной метки */
+    margin-top: 5px; /* Отступ сверху */
+}
+
+/* Стили для отправителя */
+.message-sender {
+    font-weight: bold; /* Жирный шрифт для имени отправителя */
+    font-size: 12px; /* Размер шрифта для имени отправителя */
+    margin-top: 5px; /* Отступ сверху */
+    text-align: right; /* Выравнивание текста по правому краю */
+}
