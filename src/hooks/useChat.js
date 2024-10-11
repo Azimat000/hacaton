@@ -4,23 +4,23 @@ import botService from '../services/botService';
 const useChat = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [rating, setRating] = useState(null);
 
-  const addWelcomeMessage = useCallback(() => {
-    const welcomeMessage = {
-      text: 'Привет! Как я могу помочь вам сегодня?',
-      sender: 'bot',
-      timestamp: new Date().toISOString(),
-    };
-    setMessages((prevMessages) => [...prevMessages, welcomeMessage]);
-  }, []);
-
+  //const addWelcomeMessage = useCallback(() => {
+  //  const welcomeMessage = {
+  //    text: 'Привет! Как я могу помочь вам сегодня?',
+  //    sender: 'bot',
+  //    timestamp: new Date().toISOString(),
+  //  };
+  //  setMessages((prevMessages) => [...prevMessages, welcomeMessage]);
+  //}, []);
+  //
   // Эффект для добавления приветственного сообщения при первом рендере
-  useEffect(() => {
-    addWelcomeMessage();
-  }, [addWelcomeMessage]);
+  //useEffect(() => {
+  //  addWelcomeMessage();
+  //}, [addWelcomeMessage]);
 
   const sendMessage = useCallback(async (text) => {
-
     if (!text.trim()) return;
 
     const userMessage = {
@@ -41,6 +41,12 @@ const useChat = () => {
       };
 
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      const history = {
+        question: userMessage.text,
+        answer: botMessage.text,
+        mark: rating || 0,
+      };
+      await botService.sendMessageHistory(history);
     } catch (error) {
       console.error('Error getting bot response:', error);
       const errorMessage = {
@@ -49,21 +55,30 @@ const useChat = () => {
         timestamp: new Date().toISOString(),
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
+
     } finally {
       setIsLoading(false);
     }
+  }, [rating]);
+
+  const handleRating = useCallback((ratingValue) => {
+    console.log('Оценка получена:', ratingValue);
+    setRating(ratingValue);
+    // Здесь можно добавить логику для обработки рейтинга, например, отправить на сервер или сохранить в состоянии
   }, []);
 
   const startNewChat = useCallback(() => {
     setMessages([]);
-    addWelcomeMessage(); // Добавляем приветственное сообщение при начале нового чата
-  }, [addWelcomeMessage]);
+    setRating(null); 
+    //addWelcomeMessage();
+  })//, [addWelcomeMessage]);
 
   return {
     messages,
     isLoading,
     sendMessage,
     startNewChat,
+    handleRating
   };
 };
 

@@ -9,7 +9,8 @@ const ChatInterface = () => {
     messages,
     isLoading,
     sendMessage,
-    startNewChat
+    startNewChat,
+    handleRating,
   } = useChat();
 
   const handleSendMessage = (message) => {
@@ -26,6 +27,7 @@ const ChatInterface = () => {
         messages={messages} 
         isLoading={isLoading} 
         onNewChat={handleNewChat}
+        onRate={handleRating}
       />
       <UserInput className="user-input" onSendMessage={handleSendMessage} />
     </div>

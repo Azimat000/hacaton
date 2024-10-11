@@ -54,3 +54,36 @@
     margin-top: 5px; /* Отступ сверху */
     text-align: right; /* Выравнивание текста по правому краю */
 }
+
+.rating-container {
+    display: flex;
+    align-items: center; /* Вертикальное центрирование текста и кружочков */
+    margin-top: 8px; /* Отступ сверху */
+    margin-left: 0px; /* Сдвиг влево для контейнера */
+  }
+  
+  .rating-text {
+    margin-right: 8px; /* Отступ между текстом и кружочками */
+    font-size: 16px; /* Размер шрифта для текста */
+  }
+  
+  .rating-circles {
+    display: flex; /* Выравнивание кружочков в ряд */
+  }
+  
+  .rating-circle {
+    font-size: 24px; /* Размер кружочков */
+    cursor: pointer; /* Указатель при наведении */
+    margin: 0 4px; /* Отступ между кружочками */
+    transition: color 0.3s; /* Плавный переход цвета */
+  }
+  
+  .rating-circle.rated {
+    color: gold; /* Цвет для оцененных кружочков */
+  }
+
+  .rating-result {
+    align-items: center;
+    font-size: 16px;
+    margin-top: 8px;
+  }

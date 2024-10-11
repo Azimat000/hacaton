@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Message from '../Message/Message';
 import './ChatWindow.css';
 
-const ChatWindow = ({ messages, isLoading, onNewChat }) => {
+const ChatWindow = ({ messages, isLoading, onNewChat, onRate }) => {
 
   const messagesEndRef = useRef(null);
 
@@ -22,9 +22,9 @@ const ChatWindow = ({ messages, isLoading, onNewChat }) => {
       </div>
       <div className="chat-messages">
         {messages.map((message, index) => (
-          <Message key={index} message={message} />
+          <Message key={index} message={message} onRate={onRate} />
         ))}
-        {isLoading && <div className="loading-indicator">Bot is typing...</div>}
+        {isLoading && <div className="loading-indicator">Бот печатает...</div>}
         <div ref={messagesEndRef} />
       </div>
     </div>
