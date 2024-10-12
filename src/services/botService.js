@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'https://your-bot-api-endpoint.com/api'; // Replace with your actual API endpoint
+const API_URL = 'http://176.123.163.187:8080'; // Replace with your actual API endpoint
 
 const botService = {
   sendMessage: async (message) => {
     try {
-      const response = await axios.post(`${API_URL}/chat`, { message });
-      return response.data.reply;
+      const response = await axios.post(`${API_URL}/question`, { "question": message });
+      return response.data.answer;
     } catch (error) {
       console.error('Error sending message to bot:', error);
       throw error;
