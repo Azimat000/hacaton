@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'http://176.123.163.187:8080'; // Replace with your actual API endpoint
 
 const botService = {
-  sendMessage: async (message) => {
+  send_message: async (message) => {
     try {
       const response = await axios.post(`${API_URL}/question`, { "question": message });
       return response.data.answer;
@@ -12,7 +12,7 @@ const botService = {
       throw error;
     }
   },
-  sendMessageHistory: async (history) => {
+  update_mark: async (history) => {
     console.log('Sending message history:', history);
     try {
       const response = await axios.post(`${API_URL}/message-history`, history);
@@ -23,7 +23,7 @@ const botService = {
     }
   },
 
-  downloadChatHistory: async () => {
+  download_chat_history: async () => {
     try {
       const response = await axios.get(`${API_URL}/chat-history`, {
         responseType: 'blob', // Важно указать responseType 'blob'
